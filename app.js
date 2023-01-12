@@ -8,7 +8,7 @@ mongoose.Promise=global.Promise;
 
 app.use(cors());
 
-var port=process.env.PORT || 6000;
+var port=process.env.PORT || 3000;
 
 mongoose.Promise=global.Promise;
 
