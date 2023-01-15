@@ -13,6 +13,7 @@ var port=process.env.PORT || 3000;
 mongoose.Promise=global.Promise;
 
 mongoose.connect(process.env.DATABASE,{
+    dbName:process.env.DBNAME,
     useNewUrlParser:true,
     useUnifiedTopology:true,
     //useCreateIndex:true
