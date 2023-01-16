@@ -20,87 +20,8 @@ exports.registerVehicleOwner = (req,res)=>{
     });
 }
 
-exports.login=(req,res)=>{
-    if(req.body.role==UseRole.VEHICLEOWNER){
-    VehicleOwner.findOne({email:req.body.email},(err,vehicleowner)=>{
-        if(!vehicleowner){
-            return res.status(404).json({
-                success:false,
-                message:"User email not found!"
-            });
-        }
-        vehicleowner.comparePassword(req.body.password,(err,isMatch)=>{
-            if(!isMatch){
-                return res.status(400).json({
-                    success:false,
-                    message:"Password is incorrect!"
-                });
-            }
-            vehicleowner.generateToken((err,token)=>{
-                if(err){
-                    return res.status(400).json({
-                        success:false,
-                        message:"Unable to generate jwt key!",
-                        data:err
-                    });
-                }
-                return res.status(200).json({
-                    success:true,
-                    message:"Successfully Logged In!",
-                    data:{
-                        "token":token
-                    }
-                });
-            });
-            
-        });
-    });
-    }
-    else if(req.body.role==UseRole.SHEDOWNER){
-            ShedOwner.findOne({email:req.body.email},(err,shedowner)=>{
-                if(!shedowner){
-                    return res.status(404).json({
-                        success:false,
-                        message:"User email not found!"
-                    });
-                }
-                shedowner.comparePassword(req.body.password,(err,isMatch)=>{
-                    if(!isMatch){
-                        return res.status(400).json({
-                            success:false,
-                            message:"Password is incorrect!"
-                        });
-                    }
-                    shedowner.generateToken((err,token)=>{
-                        if(err){
-                            return res.status(400).json({
-                                success:false,
-                                message:"Unable to generate jwt key!",
-                                data:err
-                            });
-                        }
-                        return res.status(200).json({
-                            success:true,
-                            message:"Successfully Logged In!",
-                            data:{
-                                "token":token
-                            }
-                        });
-                    });
-                    
-                });
-                
-            });
-    }
-    else{
-        return res.status(400).json({
-            success:false,
-            message:"Role is incorrect!"
-        });
-    }
-}
-
-// exports.loginVehicleOwner=(req,res)=>{
+// exports.login=(req,res)=>{
+//     if(req.body.role==UseRole.VEHICLEOWNER){
 //     VehicleOwner.findOne({email:req.body.email},(err,vehicleowner)=>{
 //         if(!vehicleowner){
 //             return res.status(404).json({
@@ -134,7 +55,86 @@ exports.login=(req,res)=>{
             
 //         });
 //     });
+//     }
+//     else if(req.body.role==UseRole.SHEDOWNER){
+//             ShedOwner.findOne({email:req.body.email},(err,shedowner)=>{
+//                 if(!shedowner){
+//                     return res.status(404).json({
+//                         success:false,
+//                         message:"User email not found!"
+//                     });
+//                 }
+//                 shedowner.comparePassword(req.body.password,(err,isMatch)=>{
+//                     if(!isMatch){
+//                         return res.status(400).json({
+//                             success:false,
+//                             message:"Password is incorrect!"
+//                         });
+//                     }
+//                     shedowner.generateToken((err,token)=>{
+//                         if(err){
+//                             return res.status(400).json({
+//                                 success:false,
+//                                 message:"Unable to generate jwt key!",
+//                                 data:err
+//                             });
+//                         }
+//                         return res.status(200).json({
+//                             success:true,
+//                             message:"Successfully Logged In!",
+//                             data:{
+//                                 "token":token
+//                             }
+//                         });
+//                     });
+                    
+//                 });
+                
+//             });
+//     }
+//     else{
+//         return res.status(400).json({
+//             success:false,
+//             message:"Role is incorrect!"
+//         });
+//     }
 // }
+
+exports.loginVehicleOwner=(req,res)=>{
+    VehicleOwner.findOne({email:req.body.email},(err,vehicleowner)=>{
+        if(!vehicleowner){
+            return res.status(404).json({
+                success:false,
+                message:"User email not found!"
+            });
+        }
+        vehicleowner.comparePassword(req.body.password,(err,isMatch)=>{
+            if(!isMatch){
+                return res.status(400).json({
+                    success:false,
+                    message:"Password is incorrect!"
+                });
+            }
+            vehicleowner.generateToken((err,token)=>{
+                if(err){
+                    return res.status(400).json({
+                        success:false,
+                        message:"Unable to generate jwt key!",
+                        data:err
+                    });
+                }
+                return res.status(200).json({
+                    success:true,
+                    message:"Successfully Logged In!",
+                    data:{
+                        "token":token
+                    }
+                });
+            });
+            
+        });
+    });
+}
 
 exports.getVehicleOwnerDetails= (req, res) => {
     res.json({status: true, message: "User Received!", data: req.vehicleowner});

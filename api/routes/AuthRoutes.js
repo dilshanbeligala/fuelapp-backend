@@ -5,11 +5,11 @@ module.exports = function(app){
     const AuthController = require("../controllers/AuthController");
 
     app.post("/register_vehicleowner", AuthController.registerVehicleOwner);
-    app.post("/login",AuthController.login);
-    //app.get("/vehicleowner", AuthController.getVehicleOwnerDetails);
+    // app.post("/login",AuthController.login);
+    app.get("/vehicleowner", AuthController.getVehicleOwnerDetails);
 
     app.post("/register_shedowner",AuthController.registerShedOwner);
-    // app.post("/login_shedowner",AuthController.loginShedOwner);
+    app.post("/login_shedowner",AuthController.loginShedOwner);
     //app.get("/shedowner", AuthController.getShedOwnerDetails);
 
 }
