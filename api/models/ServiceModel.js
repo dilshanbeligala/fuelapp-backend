@@ -8,11 +8,11 @@ var ServiceModelSchema=new Schema({
         maxlength:100
     },
     fuel_arrival_time:{
-        type:String,
+        type:Date,
         required:[true,'fuel arrival time is required!'],
     },
     fuel_depart_time:{
-        type:String,
+        type:Date,
         required:[true,'fuel arrival time is required!'],
     },
     fuel_status_petrol_92_octane:{

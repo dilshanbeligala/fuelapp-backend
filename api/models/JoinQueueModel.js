@@ -14,11 +14,11 @@ var JoinQueueModelSchema=new Schema({
     },
 
     arrival_time:{
-      type:String,
+      type:Date,
       required:[true,'Arrival time field is required!']
     },
     depart_time:{
-      type:String,
+      type:Date,
       required:[true,'Arrival time field is required!']
     },
     join_queue:{

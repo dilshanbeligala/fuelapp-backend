@@ -22,7 +22,5 @@ module.exports = function(app) {
     app.get("/current_vehicles_queue",[verifyToken1],ShedOwnerController.currentVehiclesInFuelQueue);
     //app.get("/fuel_queue_status_vehicle_type")
     
-//     app.delete("/shedowner/:id",ShedOwnerController.DeleteShedOwner);
-//     app.get("/shedowner/:id",ShedOwnerController.ShedOwnerID);
-//     app.get("/shedownerss",ShedOwnerController.ShedOwners);
+
 };
