@@ -12,6 +12,15 @@ var JoinQueueModelSchema=new Schema({
         ref:'Service',
         required:[true,'Service field is required!']
     },
+
+    arrival_time:{
+      type:String,
+      required:[true,'Arrival time field is required!']
+    },
+    depart_time:{
+      type:String,
+      required:[true,'Arrival time field is required!']
+    },
     join_queue:{
         type:Boolean,
         required:[true,'Join Queue field is required!']
